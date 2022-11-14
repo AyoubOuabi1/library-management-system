@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    font-family: "Segoe UI Semibold";
+}
+body{
+    padding-top: 50px;
+    background: url(../assets/images/background.jpg) no-repeat fixed;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+ }
+#userImage{
+    z-index: 2;
+    height: 5em;
+    width: 5em;
+    margin-bottom: -40px;
+    color: black;
+}
+.formContainer{
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.48);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.ButtonDesign{
+
+    height: 46px;
+    border-radius: 30px;
+    background : #000000;
+    color: white;
+
+}
+
