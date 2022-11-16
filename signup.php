@@ -16,16 +16,18 @@
   <div class="col-12 d-flex   align-items-center justify-content-center  flex-column  ">
     <img src="assets/images/user.svg" alt="account img" id="userImage">
     <div class="p-5 col-lg-7  col-md-8   col-10 formContainer  ">
-      <h3 class="h3 text-center text-black mt-4">Login</h3>
+      <h3 class="h3 text-center text-black mt-4">Sign up</h3>
       <form method="post">
 
             <div class="row mt-2">
                 <div class="form-group col-lg-6   col-12 mt-3 ">
-                    <input type="text" class="form-control  " name="inputFirstName" id="inputFirstName" aria-describedby="emailHelp" placeholder="First Name">
+                    <label for="inputFirstName" id="firstNameLabel" class="text-danger   d-none">d</label>
+                    <input type="text" class="form-control  " name="inputFirstName" id="inputFirstName" onkeyup="checkFirstName()"   placeholder="First Name">
 
                 </div>
                 <div class="form-group  col-lg-6   col-12  mt-3">
-                    <input type="text" class="form-control " name="inputLastName" id="inputLastName" aria-describedby="emailHelp" placeholder="Last Name">
+                    <label for="inputLastName" id="lastNameLabel" class="text-danger   d-none">d</label>
+                    <input type="text" class="form-control " name="inputLastName" id="inputLastName" onkeyup="checkLastName()"   placeholder="Last Name">
 
                 </div>
 
@@ -33,11 +35,13 @@
             </div>
            <div class="row mt-2">
               <div class="form-group col-lg-6   col-12 mt-3 ">
-                  <input type="email" class="form-control" name="inputEmail1" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <label for="inputEmail1" id="emailLabel" class="text-danger d-none">d</label>
+                  <input type="email" class="form-control" name="inputEmail1" id="inputEmail1" onkeyup="checkEmail()"   placeholder="Enter email">
 
               </div>
               <div class="form-group  col-lg-6   col-12  mt-3">
-                  <input type="password" class="form-control" name="inputPassword1" id="inputPassword1" placeholder="Password">
+                  <label for="inputPassword1" id="passwordLabel" class="text-danger d-none">d </label>
+                  <input type="password" class="form-control " name="inputPassword1" id="inputPassword1" onkeyup="checkPassword()"   placeholder="Password">
 
               </div>
 
@@ -47,7 +51,7 @@
 
         <div class="d-flex   align-items-center   flex-column">
 
-          <button type="button" class="col-8 ButtonDesign mt-3" onclick="insertIntoAdmin()">Sign Up</button>
+          <button type="button" id="sgnBtn" class="col-4 btn btn-primary mt-5 disabled" STYLE="border-radius: 30px"  onclick="insertIntoAdmin()">Sign Up</button>
         </div>
       </form>
     </div>

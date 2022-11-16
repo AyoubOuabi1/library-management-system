@@ -26,11 +26,9 @@ body{
     -webkit-backdrop-filter: blur(8px);
 }
 .ButtonDesign{
-
-    height: 46px;
-    border-radius: 30px;
-    background : #000000;
+     border-radius: 30px;
     color: white;
 
 }
+
 
