@@ -1,7 +1,7 @@
 <div class="  my-5">
     <div class="mb-3 d-flex justify-content-between">
         <h3 class="mt-2">Books List</h3>
-        <button class="btn  btn-primary rounded-pill" type="button">
+        <button class="btn  btn-primary rounded-pill" type="button" data-bs-toggle="modal" onclick="createTask()">
             <h5 >&emsp;Add Book&emsp;</h5>
         </button>
 
@@ -35,3 +35,5 @@
         </table>
     </div>
 </div>
+
+

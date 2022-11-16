@@ -34,20 +34,26 @@
 </div>
 
 <div class="row my-5">
-    <h3 class="fs-4 mb-3">Recent Orders</h3>
-    <div class="col">
-        <table class="table bg-white rounded shadow-sm  table-hover">
+    <h3 class="fs-4 mb-3">Recent Books</h3>
+    <div class="col table-responsive">
+        <table class="table  bg-white rounded shadow-sm  table-hover">
             <thead>
             <tr>
-                <th scope="col" width="50">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Price</th>
+                <th scope="col w-25" >id</th>
+                <th scope="col">name</th>
+                <th scope="col">created in</th>
+                <th scope="col">Writer</th>
+                <th scope="col">category</th>
+                <th scope="col">status</th>
+                <th scope="col">Outed In</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <th scope="row">1</th>
+                <td>Television</td>
+                <td>Jonny</td>
+                <td>$1200</td>
                 <td>Television</td>
                 <td>Jonny</td>
                 <td>$1200</td>
