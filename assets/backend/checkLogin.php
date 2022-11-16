@@ -1,5 +1,6 @@
 <?php
     require 'DbConnection.php';
+    session_start();
     checkUser();
     function checkUser(){
         global  $mysqli;

@@ -1,3 +1,8 @@
+<?php
+    require "assets/backend/DbConnection.php";
+    require "assets/backend/checkSession.php";
+    require  "assets/backend/getSessionData.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +27,11 @@
     <div class="list-group list-group-flush my-3">
         <div class="d-block text-center  ">
             <img src="assets/images/user.svg" alt="account img" id="userImage">
-            <h5 class="mt-1">Ayoub Ouabi</h5>
+            <?php
+                $res=getUserData();
+                echo '<h5 class="mt-1">'.$res[1].' '.$res[2].'</h5>'
+            ?>
+
         </div>
         <button type="button" id="btnDash" onclick="loadDashboard()" class=" list-group-item list-group-item-action bg-transparent second-text active">
             <i class="fas fa-tachometer-alt me-2"></i>Dashboard
@@ -32,7 +41,7 @@
         </button>
 
 
-        <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+        <a href="assets/backend/sessionLogOut.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                     class="fas fa-power-off me-2"></i>Logout</a>
     </div>
 </div>
