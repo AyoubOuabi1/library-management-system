@@ -50,8 +50,9 @@
 
 
         <div class="d-flex   align-items-center   flex-column">
-
-          <button type="button" id="sgnBtn" class="col-4 btn btn-primary mt-5 disabled" STYLE="border-radius: 30px"  onclick="insertIntoAdmin()">Sign Up</button>
+          <button type="button" id="sgnBtn" class="col-4 btn btn-primary mt-5 disabled" style="border-radius: 30px"  onclick="insertIntoAdmin()">Sign Up</button>
+            <h3 class="h3 text-center text-black  mt-3">OR</h3>
+            <button type="button" onclick="location.href='login.php'" class="col-4 btn btn-primary mt-3" style="border-radius: 30px">Login</button>
         </div>
       </form>
     </div>

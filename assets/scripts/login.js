@@ -2,6 +2,7 @@ let checkFName,checkLname,checkEmail1,checkPassword1;
 
 
 function insertIntoAdmin(){
+
     $.post("assets/backend/AddNewAdmin.php", {firstname:$("#inputFirstName").val(),lastName:$("#inputLastName").val()
             ,email:$("#inputEmail1").val(),password:$("#inputPassword1").val()},
         function (data, textStatus, jqXHR) {
@@ -22,6 +23,30 @@ function insertIntoAdmin(){
 
 }
 
+function checkLogin(){
+    if(!($("#inputEmail").val()=='')  && !($("#inputPassword").val()=='')){
+        $.post("assets/backend/checkLogin.php", {email:$("#inputEmail").val(),password:$("#inputPassword").val()},
+            function (data, textStatus, jqXHR) {
+
+                if(data==="true"){
+                    location.href='index.php'
+                }else{
+                    $('#checkLabel').html("Email or password incorrect")
+                    $('#checkLabel').removeClass('d-none');
+                 }
+            }
+        ).fail(function(){
+            console.log("failed");
+        });
+    }else{
+        $('#checkLabel').html("Email or password can't be empty")
+        $('#checkLabel').removeClass('d-none');
+     }
+
+
+}
+//start check input section
+
 function checkFirstName(){
     if(checkNumber($('#inputFirstName').val())){
         $('#inputFirstName').addClass('border border-danger')
@@ -37,7 +62,6 @@ function checkFirstName(){
 
     }
 }
-//check input section
 function checkLastName(){
     if(checkNumber($('#inputLastName').val())){
         $('#inputLastName').addClass('border border-danger')
@@ -73,6 +97,7 @@ function checkPassword(){
         $('#passwordLabel').removeClass('d-none');
         $('#passwordLabel').html('your password must longer than 6 and  has at least one special character and one number ')
         checkPassword1=false;
+        enableSgnBtn();
      }else {
         $('#passwordLabel').addClass('d-none');
         $('#inputPassword1').removeClass('border border-danger')
@@ -106,3 +131,11 @@ function checkEmailValidation(s){
 
 }
 //end verefication regex section
+//start check login if null
+function checkInput(){
+    if($("#inputEmail").val()===' '  || $("#inputPassword").val()===' '){
+        return true;
+    }else {
+        return false;
+    }
+}

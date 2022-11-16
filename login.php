@@ -18,20 +18,19 @@
             <img src="assets/images/user.svg" alt="account img" id="userImage">
             <div class="p-5 col-lg-5  col-md-6   col-10 formContainer  ">
                 <h3 class="h3 text-center text-black mt-4">Login</h3>
-                <form>
-                    <div class="form-group mt-5">
+                <form method="post">
+                    <h4 class="h4 text-center text-danger  mt-5 d-none" id="checkLabel"></h4>
+                    <div class="form-group mt-2">
                          <input type="email" class="form-control  " id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
                      </div>
-                    <div class="form-group mt-3  ">
+                    <div class="form-group mt-3">
                          <input type="password" class="form-control  " id="inputPassword" placeholder="Password">
                     </div>
                     <div class="d-flex   align-items-center   flex-column">
-                        <button type="submit" class="  col-8 ButtonDesign mt-3">Login</button>
+                        <button type="button" class="  col-4 btn btn-primary mt-5" style="border-radius: 30px" onclick="checkLogin()">Login</button>
                         <h3 class="h3 text-center text-black  mt-3">OR</h3>
-                        <button type="button" onclick="location.href='signup.php'" class="  col-8 ButtonDesign mt-3">Sign Up</button>
+                        <button type="button" onclick="location.href='signup.php'" class="col-4 btn btn-primary mt-3" style="border-radius: 30px">Sign Up</button>
                     </div>
-
-
 
                 </form>
             </div>
