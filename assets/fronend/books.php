@@ -1,7 +1,7 @@
 <div class="  my-5">
     <div class="mb-3 d-flex justify-content-end">
 
-        <button class="btn  btn-primary rounded-pill" type="button" data-bs-toggle="modal" onclick="createTask()">
+        <button class="btn  btn-primary rounded-pill" type="button" data-bs-toggle="modal" onclick="openBookModal()">
             <h5 >&emsp;Add Book&emsp;</h5>
         </button>
 
@@ -31,20 +31,15 @@
             <table class="table  bg-white rounded shadow-sm  table-hover">
                 <thead>
                 <tr>
-                    <th scope="col" >reference</th>
-                    <th scope="col">name</th>
-                    <th scope="col">Isbn</th>
+                    <th scope="col" >Name</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Out date</th>
+                    <th scope="col">Student Name</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Television</td>
-                    <td>Jonny</td>
-                    <td>$1200</td>
+                <tbody id="tableoutedbooks">
 
-                </tr>
 
                 </tbody>
             </table>

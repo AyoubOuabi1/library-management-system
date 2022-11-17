@@ -72,7 +72,9 @@
 <!-- /#page-content-wrapper -->
 <!-- TASK MODAL -->
 <?php
-include "./assets/fronend/showBookModal.php"
+include "./assets/fronend/showBookModal.php";
+include "./assets/fronend/outBookModal.php"
+
 ?>
 <!-- END TASK MODAL-->
 <!--bootsrap js cdn link-->

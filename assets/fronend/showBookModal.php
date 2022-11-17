@@ -1,10 +1,10 @@
 <!-- TASK MODAL -->
-<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle"   class="modal fade" id="modal-task" role="dialog"
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle"   class="modal fade" id="modalBook" role="dialog"
      tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header ">
-                <h2 id="tasktitle"></h2>
+                <h2 id="modaltitle"></h2>
             </div>
             <div class="modal-body">
                 <!--begin form-->

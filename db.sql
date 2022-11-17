@@ -18,6 +18,7 @@ CREATE TABLE `book` (
    quqntity int(11),
   FOREIGN KEY  (adminId) references admin(adminId) on delete cascade  on update  cascade
 );
+
 CREATE TABLE `outbook` (
   `outId` int(11) primary key auto_increment,
   `outDate` date,
@@ -43,3 +44,12 @@ CREATE PROCEDURE insertIntoOutbook(std varchar(255),bId int(11),aId int(11))
 begin
     insert into outbook values (null,sysdate(),std,bId,aId);
 end;
+
+create view booksData as
+    select bookId,bookName,isbn,writer,language,releaseDate,inputedDate,category,quqntity,a.firstName,a.lastName from book join admin a on a.adminId = book.adminId where quqntity>0;
+
+select * from booksData;
+
+create view outedBooksData as
+    select outId,outDate,stdName, b.bookId,b.bookName,b.isbn,b.writer,b.language,b.releaseDate,b.inputedDate,b.category,b.quqntity,a.firstName,a.lastName from outbook join admin a on a.adminId = outbook.adminId join book b on b.bookId = outbook.bookId;
+select *from outedBooksData;

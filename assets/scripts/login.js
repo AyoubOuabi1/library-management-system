@@ -132,11 +132,3 @@ function checkEmailValidation(s){
 
 }
 //end verefication regex section
-//start check login if null
-function checkInput(){
-    if($("#inputEmail").val()===' '  || $("#inputPassword").val()===' '){
-        return true;
-    }else {
-        return false;
-    }
-}
