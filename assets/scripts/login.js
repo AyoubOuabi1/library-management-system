@@ -2,12 +2,13 @@ let checkFName,checkLname,checkEmail1,checkPassword1;
 
 
 function insertIntoAdmin(){
-
     $.post("assets/backend/AddNewAdmin.php", {firstname:$("#inputFirstName").val(),lastName:$("#inputLastName").val()
             ,email:$("#inputEmail1").val(),password:$("#inputPassword1").val()},
-        function (data, textStatus, jqXHR) {
+        function (data) {
             if(data==="already"){
-                alert('already')
+                $('#inputEmail1').addClass('border border-danger')
+                $('#emailLabel').removeClass('d-none');
+                $('#emailLabel').html('this email already exist')
             }else{
                 if (data==="true"){
                     $('#successModal').modal('show');
@@ -26,7 +27,7 @@ function insertIntoAdmin(){
 function checkLogin(){
     if(!($("#inputEmail").val()=='')  && !($("#inputPassword").val()=='')){
         $.post("assets/backend/checkLogin.php", {email:$("#inputEmail").val(),password:$("#inputPassword").val()},
-            function (data, textStatus, jqXHR) {
+            function (data) {
 
                 if(data==="true"){
                     location.href='index.php'

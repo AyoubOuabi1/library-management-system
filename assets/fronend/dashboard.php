@@ -34,18 +34,17 @@
 </div>
 
 <div class="row my-5">
-    <h3 class="fs-4 mb-3">Recent Books Added</h3>
-    <div class="col table-responsive">
+
+    <div class="col-md-6 col-12 table-responsive">
+        <h3 class="fs-4 mb-3 primary-text">Recent Books Added</h3>
+
         <table class="table  bg-white rounded shadow-sm  table-hover">
             <thead>
             <tr>
-                <th scope="col w-25" >id</th>
+                <th scope="col" >reference</th>
                 <th scope="col">name</th>
-                <th scope="col">created in</th>
-                <th scope="col">Writer</th>
-                <th scope="col">category</th>
-                <th scope="col">status</th>
-                <th scope="col">Outed In</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Added By</th>
             </tr>
             </thead>
             <tbody>
@@ -54,9 +53,31 @@
                 <td>Television</td>
                 <td>Jonny</td>
                 <td>$1200</td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col col-md-6 col-12 table-responsive">
+        <h3 class="fs-4  mb-3 primary-text">Recent Books Outed</h3>
+
+        <table class="table  bg-white rounded shadow-sm  table-hover">
+            <thead>
+            <tr>
+                <th scope="col" >reference</th>
+                <th scope="col">name</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Added By</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
                 <td>Television</td>
                 <td>Jonny</td>
                 <td>$1200</td>
+
             </tr>
 
             </tbody>
