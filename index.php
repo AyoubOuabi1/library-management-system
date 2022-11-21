@@ -2,6 +2,7 @@
     require "assets/backend/DbConnection.php";
     require "assets/backend/checkSession.php";
     require  "assets/backend/getSessionData.php";
+    require  "assets/backend/BooksStatistiques.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +59,7 @@
 
     <div class="container-fluid px-4" id="container">
         <div id="dashboardContainer">
-            <?php include "./assets/fronend/dashboard.html" ?>
+            <?php include "./assets/fronend/dashboard.php" ?>
         </div>
         <div id="bookContainer" class="d-none">
             <?php include "./assets/fronend/books.html" ?>

@@ -1,10 +1,11 @@
 <?php
     require 'DbConnection.php';
         updateOutedBook();
-function updatOutedeBook(){
+function updateOutedBook(){
     global $mysqli;
-    $OutedbkId=$_POST['bkId'];
-    $req="CALL updateOutbook('$OutedbkId')";
+    $OutedbkId=$_POST['outBkId'];
+    $stdName=$_POST['stdName'];
+    $req="CALL updateOutbook('$OutedbkId','$stdName')";
     if($mysqli->query($req)===true){
         echo 'true';
     }else{

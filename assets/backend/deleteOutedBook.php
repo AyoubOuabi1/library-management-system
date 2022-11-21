@@ -1,6 +1,6 @@
 <?php
 require 'DbConnection.php';
-deleteBookFromBooks();
+deleteFromOutedBook();
 function deleteFromOutedBook(){
     global $mysqli;
     $outBkId=$_POST['outBkId'];

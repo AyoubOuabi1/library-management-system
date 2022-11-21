@@ -2,7 +2,7 @@
     <div class="col-md-4">
         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
-                <h3 class="fs-2">720</h3>
+                <h3 class="fs-2"><?php echo getTotalBooks() ?></h3>
                 <p class="fs-5">Total Books</p>
             </div>
             <i class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -12,8 +12,8 @@
     <div class="col-md-4">
         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
-                <h3 class="fs-2">400</h3>
-                <p class="fs-5">Books in stock</p>
+                <h3 class="fs-2"><?php echo getTotalBookLessTwo() ?></h3>
+                <p class="fs-5">Books with quantity less than 2</p>
             </div>
             <i
                 class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -25,7 +25,7 @@
     <div class="col-md-4">
         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
-                <h3 class="fs-2">320</h3>
+                <h3 class="fs-2"><?php echo getTotalOutedBook() ?></h3>
                 <p class="fs-5">Out of stock</p>
             </div>
             <i class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
