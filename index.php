@@ -58,10 +58,10 @@
 
     <div class="container-fluid px-4" id="container">
         <div id="dashboardContainer">
-            <?php include "./assets/fronend/dashboard.php" ?>
+            <?php include "./assets/fronend/dashboard.html" ?>
         </div>
         <div id="bookContainer" class="d-none">
-            <?php include "./assets/fronend/books.php" ?>
+            <?php include "./assets/fronend/books.html" ?>
         </div>
 
 
@@ -72,9 +72,9 @@
 <!-- /#page-content-wrapper -->
 <!-- TASK MODAL -->
 <?php
-include "./assets/fronend/showBookModal.php";
-include "./assets/fronend/outBookModal.php"
-
+include "./assets/fronend/showBookModal.html";
+include "./assets/fronend/AddOutedBookModal.html";
+include "./assets/fronend/ShowOutedBookModal.html"
 ?>
 <!-- END TASK MODAL-->
 <!--bootsrap js cdn link-->

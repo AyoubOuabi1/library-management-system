@@ -1,0 +1,47 @@
+<!-- Book MODAL -->
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle"   class="modal fade" id="modalOutedBookData" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h2 id="modalOutedtitle"></h2>
+      </div>
+      <div class="modal-body">
+        <!--begin form-->
+        <form  method="POST"  class="form" id="form">
+          <div class="form-group">
+            <label for="foutedbookName">Book Name</label>
+            <input class="form-control form-control-lg check" id="foutedbookName" name="foutedbookName" readonly type="text">
+          </div>
+          <div class="form-group">
+            <label for="foutedIsbn">ISBN</label>
+            <input class="form-control form-control-lg check" id="foutedIsbn" name="foutedIsbn" readonly type="text">
+          </div>
+          <div class="form-group">
+            <label for="foutedwriter">Writer</label>
+            <input class="form-control form-control-lg check" id="foutedwriter" name="foutedwriter" readonly type="text">
+          </div>
+          <div class="form-group">
+            <label for="fstdName">Student Name</label>
+            <input class="form-control form-control-lg check" id="fstdName" name="fstdName" required type="text">
+          </div>
+          <div class="mt-2 form-group">
+            <label for="foutedDate">Outed Date</label>
+            <input type="date" class=" form-control form-control-lg check" id="foutedDate" name="foutedDate" readonly >
+          </div>
+          <div class="form-group">
+            <label for="fOuteddBy">Outed by</label>
+            <input class="form-control form-control-lg check" id="fOuteddBy" name="fOuteddBy" readonly type="text">
+          </div>
+          <div class="modal-footer" id="modelOutedFooter">
+
+          </div>
+        </form>
+        <!--end form-->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TASK MODAL DELETE AND UPDATE-->

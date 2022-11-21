@@ -18,6 +18,8 @@ function openBookModal() {
     $('#modelFooter').html(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
     <button type="button" name="save" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="saveBookBtn" onclick="insertIntoBook()" >Save</button>`)
 }
+
+
 function loadBooks(){
     pageTitle.innerHTML='Books List'
     bookContainer.classList.remove('d-none');
@@ -54,11 +56,10 @@ function getBooksData(){
             for (let i=0;i<data.booksData.length;i++){
                 document.getElementById('tableBodyData').innerHTML+=`
                 <tr>
-                     <th scope="row">${data.booksData[i].bookId}</th>
                     <td>${data.booksData[i].bookName}</td>
                     <td>${data.booksData[i].isbn}</td>
                     <td>${data.booksData[i].writer}</td>
-                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">Full information</button></td>
+                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">More</button></td>
                 </tr>`;
             }
 
@@ -67,9 +68,30 @@ function getBooksData(){
     });
 
 }
+function getBooksDataBySearch(){
+     $.ajax({
+        method: "POST",
+        url: 'assets/backend/getBookDataBySearch.php',
+        data: { BookName:$('#inputBookSearch').val()},
+        dataType: 'json',
+        success: function(data){
+            document.getElementById('tableBodyData').innerHTML='';
+            for (let i=0;i<data.booksData.length;i++){
+                document.getElementById('tableBodyData').innerHTML+=`
+                <tr>
+                    <td>${data.booksData[i].bookName}</td>
+                    <td>${data.booksData[i].isbn}</td>
+                    <td>${data.booksData[i].writer}</td>
+                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">More</button></td>
+                </tr>`;
+            }
 
+
+        }
+    });
+
+}
 function selectBook(id){
-    console.log(id);
     $('#modaltitle').html("Full Information")
     $('#addDiv').removeClass('d-none');
     $('#sttDiv').removeClass('d-none');
@@ -77,8 +99,8 @@ function selectBook(id){
     $('#modalBook').modal('show');
     $('#modelFooter').html(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
     <button type="button" class="btn  btn-success text-white" data-bs-dismiss="modal"  id="${id}" onclick="openOutBookModal(this.id)" >book out</button>
-    <button type="button" class="btn  btn-primary text-white" data-bs-dismiss="modal"   onclick="" >Update</button>
-    <button type="button" class="btn  btn-danger text-white" data-bs-dismiss="modal"   onclick="" >delete</button>`)
+    <button type="button" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="${id}"  onclick="updateBook(this.id)" >Update</button>
+    <button type="button" class="btn  btn-danger text-white" data-bs-dismiss="modal" id="${id}"  onclick="DeleteBook(this.id)" >delete</button>`)
     $.ajax({
         url: 'assets/backend/getBooksData.php',
         dataType: 'json',
@@ -112,7 +134,7 @@ function insertIntoBook(){
         if(data==='true'){
             Swal.fire(
                 'Good job!',
-                'the book has been added with',
+                'the book has been added with success',
                 'success'
             )
             getBooksData();
@@ -123,6 +145,58 @@ function insertIntoBook(){
         alert(error.detail)
     })
 }
+function updateBook(bkId){
+    $.post("assets/backend/updateBook.php",
+        {bkId:bkId,bookName:$('#fbookName').val(),isbn:$('#fIsbn').val(),writer:$('#fwriter').val(),lang:$('#fLanguage').val(),
+            release:$('#frelease').val(),category:$('#fcategory').val(),quantity:$('#fquantity').val()},
+        function (data,textStatus,jqXHR) {
+        if(data==='true'){
+            Swal.fire(
+                'Good job!',
+                'the book has been Updated with success',
+                'success'
+            )
+            getBooksData();
+        }else{
+            alert(data)
+        }
+    }).fail(function (error) {
+        alert(error.detail)
+    })
+}
+function DeleteBook(bkId){
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post("assets/backend/deleteBook.php",
+                {bkId:bkId},
+                function (data,textStatus,jqXHR) {
+                    if(data==='true'){
+                        Swal.fire(
+                            'Deleted!',
+                            'this Book has been deleted.',
+                            'success'
+                        )
+                        getBooksData();
+                    }else{
+                        alert(data)
+                    }
+                }).fail(function (error) {
+                alert(error.detail)
+            })
+
+        }
+    })
+
+}
+
 //end out book function
 ///////////////////////
 //start out book function
@@ -152,6 +226,31 @@ function openOutBookModal(bkId){
         }
     });
 }
+function getOutedBooksDataBySearch(){
+    console.log($('#inputOutedBookSearch').val())
+    $.ajax({
+        method: "POST",
+        url: 'assets/backend/getOutedBookDataBySearch.php',
+        data: { StudentName:$('#inputOutedBookSearch').val()},
+        dataType: 'json',
+        success: function(data){
+            document.getElementById('tableoutedbooks').innerHTML='';
+            for (let i=0;i<data.booksData.length;i++){
+                document.getElementById('tableoutedbooks').innerHTML+=`
+                <tr>
+                    <td>${data.booksData[i].bookName}</td>
+                    <td>${data.booksData[i].isbn}</td>
+                    <td>${data.booksData[i].outDate}</td>
+                    <td>${data.booksData[i].stdName}</td>
+                    <td><button type="button" onclick="selectOutedBook(${data.booksData[i].outId})" class="btn btn-primary">More</button></td>
+                </tr>`;
+            }
+
+
+        }
+    });
+
+}
 function insertIntoOutBook(id){
     console.log(id)
     $.post("assets/backend/addNewOutDemand.php",{studentName:$('#fstudent').val(),bookId:id
@@ -159,7 +258,7 @@ function insertIntoOutBook(id){
         if(data==='true'){
             Swal.fire(
                 'Good job!',
-                'the book has been added with',
+                'the book has been added with success',
                 'success'
             )
             getOutedBooksData();
@@ -179,11 +278,11 @@ function getOutedBooksData(){
             for (let i=0;i<data.booksData.length;i++){
                 document.getElementById('tableoutedbooks').innerHTML+=`
                 <tr>
-                     <th scope="row">${data.booksData[i].bookName}</th>
+                    <td>${data.booksData[i].bookName}</td>
                     <td>${data.booksData[i].isbn}</td>
                     <td>${data.booksData[i].outDate}</td>
                     <td>${data.booksData[i].stdName}</td>
-                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">Full information</button></td>
+                    <td><button type="button" id="${data.booksData[i].outId}" onclick="selectOutedBook(this.id)" class="btn btn-primary">More</button></td>
                 </tr>`;
             }
 
@@ -191,5 +290,35 @@ function getOutedBooksData(){
         }
     });
 
+}
+function selectOutedBook(id){
+    console.log(id)
+    $('#modalOutedtitle').html("Full Information")
+    $('#modalOutedBookData').modal('show');
+    $('#modelOutedFooter').html(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
+    <button type="button" class="btn  btn-success text-white" data-bs-dismiss="modal"  id="${id}" onclick="openOutBookModal(this.id)" >book Back</button>
+    <button type="button" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="${id}"  onclick="updateBook(this.id)" >Update</button>
+    <button type="button" class="btn  btn-danger text-white" data-bs-dismiss="modal" id="${id}"  onclick="DeleteBook(this.id)" >delete</button>`)
+    $.ajax({
+        url: 'assets/backend/getOutedBooksData.php',
+        dataType: 'json',
+        success: function(data){
+            for (let i=0;i<data.booksData.length;i++){
+                if(data.booksData[i].outId==id){
+                    $('#foutedbookName').val(data.booksData[i].bookName);
+                    $('#foutedIsbn').val(data.booksData[i].isbn);
+                    $('#foutedwriter').val(data.booksData[i].writer);
+                    $('#fstdName').val(data.booksData[i].stdName);
+                    $('#foutedDate').val(data.booksData[i].outDate);
+                    $('#fOuteddBy').val(data.booksData[i].firstName+" "+data.booksData[i].lastName);
+                    break;
+
+                }
+
+            }
+
+
+        }
+    });
 }
 //end out book function

@@ -13,7 +13,7 @@
 
 </head>
 <body  >
-         <div class="col-12 d-flex   align-items-center justify-content-center  flex-column  ">
+         <div class="col-12 d-flex   align-items-center justify-content-center flex-column  ">
             <img src="assets/images/user.svg" alt="account img" id="userImage">
             <div class="p-5 col-lg-5  col-md-6   col-10 formContainer  ">
                 <h3 class="h3 text-center text-black mt-4">Login</h3>
