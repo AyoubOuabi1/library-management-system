@@ -51,7 +51,7 @@ function resetForm(){
 }
 //start   Dashboard function
 function getDashoardBooksData(){
-    console.log('rrrrrrr')
+
     $.ajax({
         url: 'assets/backend/selectBookLessTwo.php',
         dataType: 'json',
@@ -65,7 +65,7 @@ function getDashoardBooksData(){
                     <td>${data.booksData[i].isbn}</td>
                     <td>${data.booksData[i].writer}</td>
                     <td>${data.booksData[i].quantity}</td>
-                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">Update Quantity</button></td>
+                    <td><button type="button" onclick="ShowModalQuantity(${data.booksData[i].bookId},${data.booksData[i].quantity})" class="btn btn-primary">Update Quantity</button></td>
                 </tr>`;
             }
 
@@ -73,6 +73,29 @@ function getDashoardBooksData(){
         }
     });
 
+}
+function ShowModalQuantity(id,qnt){
+    $('#quantityModal').modal('show');
+    $('#fOldqnt').val(qnt)
+    $('#qntModalFooter').html(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
+    <button type="button" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="${id}"  onclick="updateQuantity(this.id)" >Update Quantity</button>`)
+
+}
+function updateQuantity(id){
+    $.ajax({
+        method: "POST",
+        url: 'assets/backend/UpdateBookQuantity.php',
+        data: {bookId:id, inputQnt:$('#fqnt').val()},
+        dataType: 'json',
+        success: function(data){
+            Swal.fire(
+                'Good job!',
+                'the Quantity has been updated with success',
+                'success'
+            )
+            getDashoardBooksData();
+        }
+    });
 }
 //end    Dashboard function
 //////////////////////////

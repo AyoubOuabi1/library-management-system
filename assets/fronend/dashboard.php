@@ -55,3 +55,25 @@
         </table>
     </div>
 </div>
+<div class="modal fade" id="quantityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Update Quantity</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="fOldqnt">Old Quantity</label>
+                    <input class="form-control form-control-lg check" id="fOldqnt" name="fOldqnt" readonly type="text">
+                </div>
+                <div class="form-group">
+                    <label for="fqnt">New Quantity</label>
+                    <input class="form-control form-control-lg check" id="fqnt" name="fqnt" required type="text">
+                </div>
+            </div>
+            <div class="modal-footer" id="qntModalFooter">
+
+            </div>
+        </div>
+    </div>
+</div>
