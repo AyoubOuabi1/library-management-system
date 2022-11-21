@@ -18,8 +18,9 @@
     }
     function getTotalBookLessTwo(){
         global $mysqli;
-        $qry="select count(*) as bookCounter from book where quqntity<2";
+        $qry="select count(*) as bookCounter from book where quqntity<2 or quqntity=2";
         $res=$mysqli->query($qry);
         $row=$res->fetch_assoc();
         return $row['bookCounter'];
     }
+

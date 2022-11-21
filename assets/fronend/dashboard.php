@@ -35,50 +35,21 @@
 
 <div class="row my-5">
 
-    <div class="col-md-6 col-12 table-responsive">
-        <h3 class="fs-4 mb-3 primary-text">Recent Books Added</h3>
+    <div class="col-12 table-responsive">
+        <h3 class="fs-4 mb-3 primary-text">List Books with quantity less than 2</h3>
 
         <table class="table  bg-white rounded shadow-sm  table-hover">
             <thead>
             <tr>
-                <th scope="col" >reference</th>
-                <th scope="col">name</th>
-                <th scope="col">Isbn</th>
-                <th scope="col">Added By</th>
+                <th scope="col">Name</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Writer</th>
+                <th scope="col">Quantity</th>
+                <th scope="col"></th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Television</td>
-                <td>Jonny</td>
-                <td>$1200</td>
+            <tbody id="dashboarTabledBody">
 
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <div class="col col-md-6 col-12 table-responsive">
-        <h3 class="fs-4  mb-3 primary-text">Recent Books Outed</h3>
-
-        <table class="table  bg-white rounded shadow-sm  table-hover">
-            <thead>
-            <tr>
-                <th scope="col" >reference</th>
-                <th scope="col">name</th>
-                <th scope="col">Isbn</th>
-                <th scope="col">Added By</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Television</td>
-                <td>Jonny</td>
-                <td>$1200</td>
-
-            </tr>
 
             </tbody>
         </table>

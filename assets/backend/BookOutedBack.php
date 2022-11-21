@@ -4,7 +4,6 @@ OutBookBack();
 
 function OutBookBack(){
     global $mysqli;
-    session_start();
     $outBkId=$_POST['outBkId'];
     $bookId=$_POST['bookId'];
     $rqt="CALL deleteFromOutedBook('$outBkId')";

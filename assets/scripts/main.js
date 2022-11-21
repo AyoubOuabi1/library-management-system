@@ -8,6 +8,8 @@ let pageTitle=document.getElementById('pageTitle');
 toggleButton.onclick = function () {
     wrapper.classList.toggle("toggled");
 };
+
+getDashoardBooksData();
 function openBookModal() {
     resetForm();
     $('#addDiv').addClass('d-none');
@@ -30,6 +32,7 @@ function loadBooks(){
     getOutedBooksData();
 }
 function loadDashboard(){
+    window.location.reload();
     pageTitle.innerHTML='Dashboard';
     btnDash.classList.add('active');
     btnBook.classList.remove('active');
@@ -46,6 +49,33 @@ function resetForm(){
     $('#fcategory').val(" ")
     $('#fquantity').val(" ")
 }
+//start   Dashboard function
+function getDashoardBooksData(){
+    console.log('rrrrrrr')
+    $.ajax({
+        url: 'assets/backend/selectBookLessTwo.php',
+        dataType: 'json',
+        success: function(data){
+            console.log(data.booksData.length)
+            document.getElementById('dashboarTabledBody').innerHTML='';
+            for (let i=0;i<data.booksData.length;i++){
+                document.getElementById('dashboarTabledBody').innerHTML+=`
+                <tr>
+                    <td>${data.booksData[i].bookName}</td>
+                    <td>${data.booksData[i].isbn}</td>
+                    <td>${data.booksData[i].writer}</td>
+                    <td>${data.booksData[i].quantity}</td>
+                    <td><button type="button" onclick="selectBook(${data.booksData[i].bookId})" class="btn btn-primary">Update Quantity</button></td>
+                </tr>`;
+            }
+
+
+        }
+    });
+
+}
+//end    Dashboard function
+//////////////////////////
 //start   book function
 function getBooksData(){
     $.ajax({
