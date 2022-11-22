@@ -1,11 +1,11 @@
 let wrapper = document.getElementById("wrapper");
-let toggleButton = document.getElementById("menu-toggle");
+let menuButton = document.getElementById("menu-toggle");
 let dashboardContainer=document.getElementById("dashboardContainer");
 let bookContainer=document.getElementById("bookContainer");
 let btnBook=document.getElementById("btnBook");
 let btnDash=document.getElementById("btnDash");
 let pageTitle=document.getElementById('pageTitle');
-toggleButton.onclick = function () {
+menuButton.onclick = function () {
     wrapper.classList.toggle("toggled");
 };
 
