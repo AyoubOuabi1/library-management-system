@@ -21,12 +21,26 @@ function openBookModal() {
     <button type="button" name="save" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="saveBookBtn" onclick="insertIntoBook()" >Save</button>`)
 }
 
+function loadProfile(){
+    getAdminData();
+    btnDash.classList.remove('active');
+    $('#btnprfl').addClass('active')
+    btnBook.classList.remove('active');
+    document.getElementById('adminOldPassword').value='';
+    document.getElementById('adminNewPassword').value='';
+    $('#passwordNewLabel').addClass('d-none');
+    $('#adminNewPassword').removeClass('border border-danger')
+    //$('#adminNewPassword').val('');
+    $('#profileModal').modal('show');
 
+
+}
 function loadBooks(){
     pageTitle.innerHTML='Books List'
     bookContainer.classList.remove('d-none');
     dashboardContainer.classList.add('d-none');
     btnDash.classList.remove('active');
+    $('#btnprfl').removeClass('active')
     btnBook.classList.add('active');
     getBooksData();
     getOutedBooksData();
@@ -34,6 +48,7 @@ function loadBooks(){
 function loadDashboard(){
     window.location.reload();
     pageTitle.innerHTML='Dashboard';
+    $('#btnprfl').removeClass('active')
     btnDash.classList.add('active');
     btnBook.classList.remove('active');
     bookContainer.classList.add('d-none');
@@ -49,17 +64,82 @@ function resetForm(){
     $('#fcategory').val(" ")
     $('#fquantity').val(" ")
 }
+//start   profile function
+function getAdminData(){
+    $.ajax({
+        url: 'assets/backend/getAdminData.php',
+        dataType: 'json',
+        success: function(data){
+            console.log(data.adminData);
+            $('#adminFirstName').val(data.adminData[0].firstName);
+            $('#adminLastName').val(data.adminData[0].lastName);
+            $('#adminEmail').val(data.adminData[0].email);
+        }
+    });
+
+}
+
+function updateAdmin(){
+    $.post("assets/backend/UpdateProfile.php", {firstname:$("#adminFirstName").val(),lastName:$("#adminLastName").val()
+            ,email:$("#adminEmail").val(),password:$("#adminOldPassword").val(),newPassword:$("#adminNewPassword").val()},
+        function (data) {
+        console.log(data)
+            if(data=='true'){
+                Swal.fire(
+                    'Good job!',
+                    'your Data has been updated with success',
+                    'success'
+                )
+                $('#userName').html($("#adminFirstName").val()+" "+$("#adminLastName").val());
+            }else{
+                if (data==="wrong password"){
+                   alert('wrong password')
+                }
+            }
+        }
+    ).fail(function(){
+        console.log("failed");
+    });
+
+}
+function disableBtn(){
+    $('#updateAdminBtn').addClass('disabled');
+    $('#updateAdminBtn').attr('disabled','disabled');
+}
+function checkNewPassword(){
+    if(!checkPasswordValidation($('#adminNewPassword').val())){
+        $('#adminNewPassword').addClass('border border-danger')
+        $('#passwordNewLabel').removeClass('d-none');
+        $('#passwordNewLabel').html('your password must longer than 6 and  has at least one special character and one number ')
+
+    }else {
+        $('#passwordNewLabel').addClass('d-none');
+        $('#adminNewPassword').removeClass('border border-danger')
+        $('#updateAdminBtn').removeAttr('disabled');
+        $('#updateAdminBtn').removeClass('disabled');
+
+    }
+}
+//end   Dashboard function
+///////////////////////
 //start   Dashboard function
 function getDashoardBooksData(){
-
     $.ajax({
         url: 'assets/backend/selectBookLessTwo.php',
         dataType: 'json',
         success: function(data){
-            console.log(data.booksData.length)
-            document.getElementById('dashboarTabledBody').innerHTML='';
-            for (let i=0;i<data.booksData.length;i++){
-                document.getElementById('dashboarTabledBody').innerHTML+=`
+            console.log(data.booksData)
+            if(data.booksData=='No Data'){
+                document.getElementById('dashboarTabledBody').innerHTML='';
+                $('#noBooksPar').removeClass('d-none')
+                $('#lessTwo').html('0')
+            }else{
+                $('#noBooksPar').addClass('d-none')
+                document.getElementById('dashboarTabledBody').innerHTML='';
+                let c=0;
+                for (let i=0;i<data.booksData.length;i++){
+                    c++;
+                    document.getElementById('dashboarTabledBody').innerHTML+=`
                 <tr>
                     <td>${data.booksData[i].bookName}</td>
                     <td>${data.booksData[i].isbn}</td>
@@ -67,16 +147,25 @@ function getDashoardBooksData(){
                     <td>${data.booksData[i].quantity}</td>
                     <td><button type="button" onclick="ShowModalQuantity(${data.booksData[i].bookId},${data.booksData[i].quantity})" class="btn btn-primary">Update Quantity</button></td>
                 </tr>`;
+                }
+                $('#lessTwo').html(c)
             }
 
 
+
+
+
+
+        },fail: function (f){
+            alert(f);
         }
     });
 
 }
 function ShowModalQuantity(id,qnt){
     $('#quantityModal').modal('show');
-    $('#fOldqnt').val(qnt)
+    $('#fOldqnt').val(qnt);
+    $('#fqnt').val(" ");
     $('#qntModalFooter').html(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
     <button type="button" class="btn  btn-primary text-white" data-bs-dismiss="modal" id="${id}"  onclick="updateQuantity(this.id)" >Update Quantity</button>`)
 
@@ -94,8 +183,10 @@ function updateQuantity(id){
                 'success'
             )
             getDashoardBooksData();
+
         }
     });
+
 }
 //end    Dashboard function
 //////////////////////////
@@ -122,6 +213,7 @@ function getBooksData(){
 
 }
 function getBooksDataBySearch(){
+    document.getElementById('tableBodyData').innerHTML='';
      $.ajax({
         method: "POST",
         url: 'assets/backend/getBookDataBySearch.php',

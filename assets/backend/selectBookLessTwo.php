@@ -1,6 +1,6 @@
 <?php
     require 'DbConnection.php';
-getBooksListLessTwo();
+    getBooksListLessTwo();
 function getBooksListLessTwo(){
     global $mysqli;
     $rqt="select * from book where quqntity<2 or quqntity=2";
@@ -19,7 +19,11 @@ function getBooksListLessTwo(){
             );
         }
         $data['booksData']=$arr;
+        echo json_encode($data);
+    }else {
+        $data['booksData']='No Data';
+        echo json_encode($data);
 
     }
-    echo json_encode($data);
+
 }

@@ -48,11 +48,9 @@ end;
 create view booksData as
     select bookId,bookName,isbn,writer,language,releaseDate,inputedDate,category,quqntity,a.firstName,a.lastName from book join admin a on a.adminId = book.adminId where quqntity>0;
 
-select * from booksData;
 
 create view outedBooksData as
     select outId,outDate,stdName, b.bookId,b.bookName,b.isbn,b.writer,b.language,b.releaseDate,b.inputedDate,b.category,b.quqntity,a.firstName,a.lastName from outbook join admin a on a.adminId = outbook.adminId join book b on b.bookId = outbook.bookId;
-select *from outedBooksData;
 
 create procedure updateBook(bkId int(11),bName varchar(255),bISBN varchar(13),bWriter varchar(255),bLang varchar(255),bDate date,bCat varchar(255),qnt int(11))
 begin
@@ -69,4 +67,8 @@ end;
 create procedure deleteFromOutedBook(outBkId int(11))
 begin
     DELETE FROM `outbook` WHERE `outId`=outBkId;
+end;
+create procedure updateAdmin(adminIdd int(11), firstNamee varchar(255)  ,lastNamee varchar(255)  ,emaill varchar(255)  ,passwordd varchar(255))
+begin
+    UPDATE `admin` SET `firstName`=firstNamee,`lastName`=lastNamee,`email`=emaill,`password`=passwordd WHERE adminId=adminIdd;
 end;

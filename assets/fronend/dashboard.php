@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
             <div>
-                <h3 class="fs-2"><?php echo getTotalBookLessTwo() ?></h3>
+                <h3 class="fs-2" id="lessTwo"><?php echo getTotalBookLessTwo() ?></h3>
                 <p class="fs-5">Books with quantity less than 2</p>
             </div>
             <i
@@ -54,6 +54,9 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="d-none col-12" id="noBooksPar">
+    <h3 class="h3 text-danger text-center">The are no books with quantity less than 2</h3>
 </div>
 <div class="modal fade" id="quantityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

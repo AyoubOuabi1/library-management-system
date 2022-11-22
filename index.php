@@ -31,7 +31,7 @@
             <img src="assets/images/user.svg" alt="account img" id="userImage">
             <?php
                 $res=getUserData();
-                echo '<h5 class="mt-1">'.$res[1].' '.$res[2].'</h5>'
+                echo '<h5 class="mt-1" id="userName">'.$res[1].' '.$res[2].'</h5>'
             ?>
 
         </div>
@@ -42,7 +42,9 @@
             <i  class="fas fa-book me-2"></i>Books
         </button>
 
-
+        <button type="button" id="btnprfl" onclick="loadProfile()" class=" list-group-item list-group-item-action bg-transparent second-text ">
+            <i  class="fas fa-user me-2"></i>Profile
+        </button>
         <a href="assets/backend/sessionLogOut.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                     class="fas fa-power-off me-2"></i>Logout</a>
     </div>
@@ -75,13 +77,15 @@
 <?php
 include "./assets/fronend/showBookModal.html";
 include "./assets/fronend/AddOutedBookModal.html";
-include "./assets/fronend/ShowOutedBookModal.html"
+include "./assets/fronend/ShowOutedBookModal.html";
+include "./assets/fronend/profileModal.html";
 ?>
 <!-- END TASK MODAL-->
 <!--bootsrap js cdn link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/scripts/login.js"></script>
     <script src="./assets/scripts/main.js"></script>
 
 </body>

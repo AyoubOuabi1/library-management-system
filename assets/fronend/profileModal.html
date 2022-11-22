@@ -1,0 +1,43 @@
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Admin Information</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="adminFirstName">First Name</label>
+                        <input class="form-control form-control-lg check" id="adminFirstName" name="adminFirstName" required type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminLastName">Last Name</label>
+                        <input class="form-control form-control-lg check" id="adminLastName" name="adminLastName" required type="text">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEmail">Email</label>
+                        <input class="form-control form-control-lg check" id="adminEmail" name="adminEmail" required type="email">
+
+                    </div>
+                    <div class="form-group">
+                        <label class="h5 text-danger mt-3">To Change Password please entre the old password and new Password</label></br>
+                        <label for="adminOldPassword">Current Password</label>
+                        <input class="form-control form-control-lg check" id="adminOldPassword" name="adminOldPassword" onkeydown="disableBtn()" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminNewPassword">New Password</label>
+                        <input class="form-control form-control-lg check" id="adminNewPassword" name="adminNewPassword"  onkeyup="checkNewPassword()" type="password"></br>
+                        <label id="passwordNewLabel" class="text-danger d-none">d </label>
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer" id="profileModalFooter">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >cancel</button>
+                <button type="button" id="updateAdminBtn" class="btn  btn-primary text-white" data-bs-dismiss="modal"  onclick="updateAdmin()" >Update</button>
+            </div>
+        </div>
+    </div>
+</div>
